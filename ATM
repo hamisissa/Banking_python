@@ -1,0 +1,41 @@
+import sys
+class customer:
+    ''' Customer class with bank related operations'''
+    bankname='STATE BANK OF INDIA'
+
+    def __init__(self,name,balance=0):
+        self.name=name
+        self.balance=balance
+    
+    def deposite(self,amt):
+        self.balance=self.balance+amt
+        print('after deposit the balance:',self.balance)
+        
+    def withdraw(self,amt):
+        if amt>self.balance:
+            print('insufficient fund..cannot perform operations')
+            sys.exit()
+        self.balance=self.balance-amt
+        print('after withdrwal your balance :',self.balance)
+        
+print('Welcome to',customer.bankname)
+name=input('enter your name')
+c=customer(name)
+print('Welcome', name)
+
+while True:
+    print('d-Deposite\w-Withdraw\e-Exit')
+    option=input('choose your option:')
+    if option.lower()=='d':
+        amt=eval(input('enter amount to deposit'))
+        c.deposite(amt)
+        
+    elif option.lower()=='w':
+        amt=eval(input('enter amount to withdraw'))
+        c.withdraw(amt)
+    elif option.lower()=='e':
+        print('thanks for banking')
+        sys.exit(0)
+    
+    else:
+        print('enter valid option')
